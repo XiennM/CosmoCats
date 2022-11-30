@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
     public GameObject Gallery;
     public Text highScore;
     private int h_score;
+    public  AudioSource click_audio;
 
     private void Awake()
     {
@@ -31,12 +32,19 @@ public class MainMenu : MonoBehaviour
         instance.highScore.text = h_score.ToString();
     }
 
+    IEnumerator waiter()
+    {
+        yield return new WaitForSeconds((float)0.2);
+    }
+
     public void NewGame()
     {
+        StartCoroutine(waiter());
         SceneManager.LoadScene(1);
     }
     public void Exit()
     {
+        StartCoroutine(waiter());
         Application.Quit();
     }
     public void Collection()
@@ -50,4 +58,9 @@ public class MainMenu : MonoBehaviour
         Menu.SetActive(true);
         Gallery.SetActive(false);
     }
+
+    public void Button_click()
+    {
+        click_audio.Play();
+    }    
 }
