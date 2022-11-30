@@ -7,6 +7,7 @@ public class Meteor : MonoBehaviour
     public GameObject player;
     public GameObject[] OffObj;
     public GameObject button;
+    public GameObject score;
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,6 +15,7 @@ public class Meteor : MonoBehaviour
         {
             button.transform.position = new Vector3(0, player.transform.position.y, 0);
             player.SetActive(false);
+            score.SetActive(false);
             foreach (var item in OffObj)
                 item.SetActive(false);
 

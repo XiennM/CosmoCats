@@ -18,10 +18,10 @@ public class Move : MonoBehaviour
     void Update()
     {
         transform.position += new Vector3(0, speed, 0) * Time.deltaTime;
-        
+
         foreach (var x in move_with_player)
         x.transform.position += new Vector3(0, speed, 0) * Time.deltaTime;
-                //    x.GetComponent<Transform>().position = new Vector3(0, transform.position.y + 1.5f, 0);
+        //    x.GetComponent<Transform>().position = new Vector3(0, transform.position.y + 1.5f, 0);
     }
 
     public void MoveRight()

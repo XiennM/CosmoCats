@@ -1,13 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    public static MainMenu instance;
     public GameObject Menu;
     public GameObject Gallery;
+    public Text highScore;
+    private int h_score;
+
+    private void Awake()
+    {
+        instance = this;
+        if (PlayerPrefs.HasKey("SaveScore"))
+            h_score = PlayerPrefs.GetInt("SaveScore");
+        else h_score = 0;
+    }
+
+
+    private void Start()
+    {
+        if (Score_script.High_score > h_score)
+        {
+            h_score = Score_script.High_score;
+            PlayerPrefs.SetInt("SaveScore", h_score);
+        }
+        instance.highScore.text = h_score.ToString();
+    }
 
     public void NewGame()
     {
