@@ -15,6 +15,8 @@ public class MainMenu : MonoBehaviour
 
     private void Awake()
     {
+        if (!PlayerPrefs.HasKey("CatSkin")) PlayerPrefs.SetInt("CatSkin", 0);
+        if (!PlayerPrefs.HasKey("RocketSkin")) PlayerPrefs.SetInt("RocketSkin", 0);
         instance = this;
         if (PlayerPrefs.HasKey("SaveScore"))
             h_score = PlayerPrefs.GetInt("SaveScore");
@@ -30,6 +32,7 @@ public class MainMenu : MonoBehaviour
             PlayerPrefs.SetInt("SaveScore", h_score);
         }
         instance.highScore.text = h_score.ToString();
+        Gallery.SetActive(false);
     }
 
     IEnumerator waiter()
@@ -49,12 +52,14 @@ public class MainMenu : MonoBehaviour
     }
     public void Collection()
     {
-        Gallery.transform.position = new Vector3(720, 1480, 0);
+        StartCoroutine(waiter());
+        //Gallery.transform.position = new Vector3(720, 1480, 0);
         Menu.SetActive(false);
         Gallery.SetActive(true);
     }
     public void toMenu()
     {
+        StartCoroutine(waiter());
         Menu.SetActive(true);
         Gallery.SetActive(false);
     }

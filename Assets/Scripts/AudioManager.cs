@@ -18,6 +18,7 @@ public class AudioManager : MonoBehaviour
             if (PlayerPrefs.GetInt("muted") == 1)
             {
                 muted = true;
+                AudioListener.pause = true;
             }
         }
         updateButtonIcon();

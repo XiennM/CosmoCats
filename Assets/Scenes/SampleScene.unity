@@ -3310,6 +3310,72 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3214755008479243015, guid: 81efe1b9101aeb34082d1ba4e354e5fe, type: 3}
   m_PrefabInstance: {fileID: 3214755007534441519}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1316747813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1316747815}
+  - component: {fileID: 1316747817}
+  - component: {fileID: 1316747816}
+  m_Layer: 0
+  m_Name: GameManage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1316747815
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316747813}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3998.2788, y: 852.0981, z: 34693.55}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1316747816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316747813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24bed6ac13cc18d4a97d7cced2aefa88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 1656339362}
+  Sprites:
+  - {fileID: 21300000, guid: 2cbb7631f2cebb245983c7eb4ddcb2a2, type: 3}
+  - {fileID: 21300000, guid: 1882915c8834e1b4b809e03d5e8f4c48, type: 3}
+--- !u!114 &1316747817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316747813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 993c4dc5593310b4ab96bcaade54fae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 1738870572}
+  Sprites:
+  - {fileID: 21300000, guid: ed909e8155d4eb64f86b605305c90150, type: 3}
+  - {fileID: 21300000, guid: e0dc7c43c75e1da42b0bf3ce40273bf6, type: 3}
+  - {fileID: 21300000, guid: f62d4b14530dcde4186b848466ea1d6a, type: 3}
 --- !u!1001 &1396280104
 PrefabInstance:
   m_ObjectHideFlags: 0
