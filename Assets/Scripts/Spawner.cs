@@ -10,16 +10,32 @@ public class Spawner : MonoBehaviour
     public float timeBetweenSpawn;
     private float timeToSpawn;
 
-    // Start is called before the first frame update
-    void Start()
+    public float speed;
+    public float timeToIncrease;
+    public float maxspeed;
+    float sub_timeToIncrease;
+
+    private void Start()
     {
-        timeToSpawn = timeBetweenSpawn;
+        sub_timeToIncrease = timeToIncrease;
     }
 
     // Update is called once per frame
     void Update()
     {
         int rand = Random.Range(0, obstacles.Length);
+
+        if (timeToIncrease <= 0 && maxspeed > speed)
+        {
+            speed = speed + (speed / 2);
+            timeToIncrease = sub_timeToIncrease;
+        }
+        else
+        {
+            timeToIncrease -= Time.deltaTime;
+        }
+
+        PlayerPrefs.SetFloat("Obst_speed", speed);
 
         if (timeToSpawn <= 0)
         {

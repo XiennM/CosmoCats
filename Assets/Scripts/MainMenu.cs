@@ -55,7 +55,6 @@ public class MainMenu : MonoBehaviour
     public void Collection()
     {
         StartCoroutine(waiter());
-        //Gallery.transform.position = new Vector3(720, 1480, 0);
         Menu.SetActive(false);
         Gallery.SetActive(true);
     }
