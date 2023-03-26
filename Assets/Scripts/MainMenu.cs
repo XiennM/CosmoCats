@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     public static MainMenu instance;
     public GameObject Menu;
     public GameObject Gallery;
+    public GameObject ComicsChapters;
     public Text highScore;
     private int h_score;
     public  AudioSource click_audio;
@@ -33,6 +34,7 @@ public class MainMenu : MonoBehaviour
         }
         instance.highScore.text = h_score.ToString();
         Gallery.SetActive(false);
+        ComicsChapters.SetActive(false);
     }
 
     IEnumerator waiter()
@@ -57,13 +59,24 @@ public class MainMenu : MonoBehaviour
         Menu.SetActive(false);
         Gallery.SetActive(true);
     }
+    public void Comics()
+    {
+        StartCoroutine(waiter());
+        Menu.SetActive(false);
+        ComicsChapters.SetActive(true);
+    }
     public void toMenu()
     {
         StartCoroutine(waiter());
         Menu.SetActive(true);
         Gallery.SetActive(false);
     }
-
+    public void toMenu2()
+    {
+        StartCoroutine(waiter());
+        Menu.SetActive(true);
+        ComicsChapters.SetActive(false);
+    }
     public void Button_click()
     {
         click_audio.Play();
