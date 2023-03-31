@@ -18,6 +18,7 @@ public class Spawner : MonoBehaviour
     private void Start()
     {
         sub_timeToIncrease = timeToIncrease;
+        PlayerPrefs.SetFloat("Obst_speed", speed);
     }
 
     // Update is called once per frame
@@ -27,7 +28,7 @@ public class Spawner : MonoBehaviour
 
         if (timeToIncrease <= 0 && maxspeed > speed)
         {
-            speed = speed + (speed / 2);
+            speed = speed + (speed / 5);
             timeToIncrease = sub_timeToIncrease;
         }
         else

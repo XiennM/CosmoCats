@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class Move : MonoBehaviour
@@ -16,7 +17,8 @@ public class Move : MonoBehaviour
     float Xincrement;
 
     public GameObject Wasted_window;
-    public GameObject score;
+    public Text score;
+    public GameObject score_counter;
 
 
 
@@ -66,10 +68,18 @@ public class Move : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.CompareTag("Obstacle"))
         {
             Wasted_window.SetActive(true);
-            score.SetActive(false);
+            score.text = score_counter.GetComponent<Text>().text;
+            score_counter.SetActive(false);
+        }
+
+        if (collision.CompareTag("Coin"))
+        {
+            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 1);
+            Destroy(collision.gameObject);
         }
     }
 

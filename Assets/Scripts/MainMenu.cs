@@ -12,6 +12,8 @@ public class MainMenu : MonoBehaviour
     public GameObject ComicsChapters;
     public Text highScore;
     private int h_score;
+    public Text coinCounter;
+    private int coins;
     public  AudioSource click_audio;
 
     private void Awake()
@@ -22,6 +24,9 @@ public class MainMenu : MonoBehaviour
         if (PlayerPrefs.HasKey("SaveScore"))
             h_score = PlayerPrefs.GetInt("SaveScore");
         else h_score = 0;
+        if (PlayerPrefs.HasKey("Coins"))
+            coins = PlayerPrefs.GetInt("Coins");
+        else coins = 0;
     }
 
 
@@ -33,6 +38,7 @@ public class MainMenu : MonoBehaviour
             PlayerPrefs.SetInt("SaveScore", h_score);
         }
         instance.highScore.text = h_score.ToString();
+        instance.coinCounter.text = coins.ToString();
         Gallery.SetActive(false);
         ComicsChapters.SetActive(false);
     }
