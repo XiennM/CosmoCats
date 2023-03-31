@@ -15,16 +15,16 @@ public class Score_script : MonoBehaviour
 
     public Text Score_txt;
 
-    public Text Score_txt2;
-
     private void FixedUpdate()
     {
-        Score_counter++;
-        Score_txt.text = (Score_counter / 50).ToString();
-        Score_txt2.text = (Score_counter / 50).ToString();
-        if (Score_counter > High_score)
+        if (gameObject.activeSelf)
         {
-            High_score = (Score_counter / 50);
+            Score_counter++;
+            Score_txt.text = (Score_counter / 50).ToString();
+            if (Score_counter > High_score)
+            {
+                High_score = (Score_counter / 50);
+            }
         }
     }
 
