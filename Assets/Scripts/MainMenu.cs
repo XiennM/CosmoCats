@@ -15,6 +15,7 @@ public class MainMenu : MonoBehaviour
     public Text coinCounter;
     private int coins;
     public  AudioSource click_audio;
+    public GameObject cat;
 
     private void Awake()
     {
@@ -61,12 +62,16 @@ public class MainMenu : MonoBehaviour
     public void Collection()
     {
         StartCoroutine(waiter());
+        cat.GetComponent<Animator>().Rebind();
+        cat.GetComponent<Animator>().Update(0f);
         Menu.SetActive(false);
         Gallery.SetActive(true);
     }
     public void Comics()
     {
         StartCoroutine(waiter());
+        cat.GetComponent<Animator>().Rebind();
+        cat.GetComponent<Animator>().Update(0f);
         Menu.SetActive(false);
         ComicsChapters.SetActive(true);
     }
