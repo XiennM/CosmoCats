@@ -41,13 +41,19 @@ public class ComicsSwiping : MonoBehaviour
 
     private void NextPage()
     {
-        PageNum++;
+        if (PageNum + 1 < Pages.Count) 
+        {
+            PageNum++;
+        }
         ComicsPage.sprite = Pages[PageNum]; 
     }
 
     private void PreviousPage()
     {
-        PageNum--;
+        if (PageNum - 1 >= 0)
+        {
+            PageNum--;
+        }
         ComicsPage.sprite = Pages[PageNum];
     }
 }
