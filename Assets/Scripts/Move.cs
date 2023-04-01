@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using static UnityEngine.GraphicsBuffer;
 
 public class Move : MonoBehaviour
 {
@@ -15,11 +16,27 @@ public class Move : MonoBehaviour
     public int columnNum = 0;
     public float speed;
     float Xincrement;
+    public float radius;
+    private Vector3 velocity;
 
     public GameObject Wasted_window;
     public Text score;
     public GameObject score_counter;
 
+    private bool isMagnet = false;
+    public float CoolDownTime;
+    private float curMagnetCoolDownTime;
+
+    private bool isShield = false;
+    private float curShieldCoolDownTime;
+    public GameObject shield;
+
+    public GameObject spawner;
+    public GameObject boosterSpawner;
+    public float spawnerSpeed;
+    public float boosterSpeed;
+
+    public float minSpeed;
 
 
     private void Start()
@@ -53,6 +70,34 @@ public class Move : MonoBehaviour
             }
         }
 
+        if (isMagnet)
+        {
+
+            MagnetMove();
+
+            if (curMagnetCoolDownTime <= 0)
+            {
+                isMagnet = false;
+            }
+            else
+            {
+                curMagnetCoolDownTime -= Time.deltaTime;
+            }
+        }
+
+        if (isShield)
+        {
+            if (curShieldCoolDownTime <= 0)
+            {
+                isShield = false;
+                shield.SetActive(false);
+            }
+            else
+            {
+                curShieldCoolDownTime -= Time.deltaTime;
+            }
+        }
+
     }
 
     public void MoveRight()
@@ -71,15 +116,61 @@ public class Move : MonoBehaviour
 
         if (collision.CompareTag("Obstacle"))
         {
-            Wasted_window.SetActive(true);
-            score.text = score_counter.GetComponent<Text>().text;
-            score_counter.SetActive(false);
+            if (!isShield)
+            {
+                Wasted_window.SetActive(true);
+                score.text = score_counter.GetComponent<Text>().text;
+                score_counter.SetActive(false);
+                gameObject.SetActive(false);
+            }
         }
 
         if (collision.CompareTag("Coin"))
         {
             PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 1);
             Destroy(collision.gameObject);
+        }
+
+        if (collision.CompareTag("Magnet"))
+        {
+            curMagnetCoolDownTime = CoolDownTime;
+            isMagnet = true;
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.CompareTag("Shield"))
+        {
+            curShieldCoolDownTime = CoolDownTime;
+            isShield = true;
+            Destroy(collision.gameObject);
+            shield.SetActive(true);
+        }
+
+        if (collision.CompareTag("CoinBag"))
+        {
+            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + Random.Range(10, 20));
+            Destroy(collision.gameObject);
+        }
+        
+        if (collision.CompareTag("SlowDown"))
+        {
+            spawner.GetComponent<Spawner>().timeBetweenSpawn = spawnerSpeed;
+            boosterSpawner.GetComponent<boosterSpawner>().timeBetweenSpawn = boosterSpeed;
+            PlayerPrefs.SetFloat("Obst_speed", minSpeed);
+            Destroy(collision.gameObject);
+        }
+        
+    }
+
+    public void MagnetMove()
+    {
+        Collider2D[] coins = Physics2D.OverlapCircleAll(transform.position, radius);
+        foreach (Collider2D coin in coins) 
+        {
+            if (coin.gameObject.CompareTag("Coin"))
+            {
+                coin.gameObject.transform.position = Vector3.SmoothDamp(coin.gameObject.transform.position, new Vector3(transform.position.x, transform.position.y, 0), ref velocity, 0.5f);
+            }
         }
     }
 

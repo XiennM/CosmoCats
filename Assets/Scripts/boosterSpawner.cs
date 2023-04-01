@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class boosterSpawner : MonoBehaviour
 {
-
     public GameObject[] obstacles;
 
     public float timeBetweenSpawn;
@@ -13,11 +12,14 @@ public class Spawner : MonoBehaviour
     public float speed;
     public float timeToIncrease;
     public float maxspeed;
-    float sub_timeToIncrease;
 
     public float timeToSpawnIncrease;
     float sub_timeToSpawnIncrease;
     public float minTimeBetweenSpawn;
+
+    public int prefsCoins;
+    public int boosterPercent;
+    float sub_timeToIncrease;
 
     private void Start()
     {
@@ -29,19 +31,19 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int rand = Random.Range(0, obstacles.Length);
+        int rand = Random.Range(0, 100);
         speed = PlayerPrefs.GetFloat("Obst_speed");
 
         if (timeToIncrease <= 0 && maxspeed > speed)
         {
-            speed = speed + (speed / 20);
+            speed = speed + (speed / 5);
             timeToIncrease = sub_timeToIncrease;
         }
         else
         {
             timeToIncrease -= Time.deltaTime;
         }
-        
+
         if (timeToSpawnIncrease <= 0 && timeBetweenSpawn > minTimeBetweenSpawn)
         {
             timeBetweenSpawn -= timeBetweenSpawn / 20;
@@ -51,12 +53,19 @@ public class Spawner : MonoBehaviour
         {
             timeToSpawnIncrease -= Time.deltaTime;
         }
-        
+
         PlayerPrefs.SetFloat("Obst_speed", speed);
 
         if (timeToSpawn <= 0)
         {
-            Instantiate(obstacles[rand], transform.position , Quaternion.identity);
+            if (rand <= (100 - boosterPercent))
+            {
+                Instantiate(obstacles[Random.Range(0, prefsCoins)], transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(obstacles[Random.Range(prefsCoins, obstacles.Length)], transform.position, Quaternion.identity);
+            }
             timeToSpawn = timeBetweenSpawn;
         }
         else
