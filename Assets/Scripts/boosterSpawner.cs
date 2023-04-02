@@ -16,6 +16,7 @@ public class boosterSpawner : MonoBehaviour
     public float timeToSpawnIncrease;
     float sub_timeToSpawnIncrease;
     public float minTimeBetweenSpawn;
+    float IncSpawn;
 
     public int prefsCoins;
     public int boosterPercent;
@@ -26,6 +27,7 @@ public class boosterSpawner : MonoBehaviour
         sub_timeToIncrease = timeToIncrease;
         sub_timeToSpawnIncrease = timeToSpawnIncrease;
         PlayerPrefs.SetFloat("Obst_speed", speed);
+        IncSpawn = timeBetweenSpawn / 20;
     }
 
     // Update is called once per frame
@@ -36,7 +38,7 @@ public class boosterSpawner : MonoBehaviour
 
         if (timeToIncrease <= 0 && maxspeed > speed)
         {
-            speed = speed + (speed / 5);
+            speed = speed + (speed / 20);
             timeToIncrease = sub_timeToIncrease;
         }
         else
@@ -46,7 +48,7 @@ public class boosterSpawner : MonoBehaviour
 
         if (timeToSpawnIncrease <= 0 && timeBetweenSpawn > minTimeBetweenSpawn)
         {
-            timeBetweenSpawn -= timeBetweenSpawn / 20;
+            timeBetweenSpawn -= IncSpawn;
             timeToSpawnIncrease = sub_timeToSpawnIncrease;
         }
         else

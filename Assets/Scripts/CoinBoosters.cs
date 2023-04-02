@@ -6,13 +6,17 @@ public class CoinBoosters : MonoBehaviour
 {
     float speed;
     public float radius;
+    public bool ableToReach = false;
 
     // Update is called once per frame
     void Update()
     {
         if (Physics2D.OverlapCircle(transform.position, radius).CompareTag("Obstacle"))
         {
-            Destroy(gameObject);
+            if (!ableToReach)
+            {
+                Destroy(gameObject);
+            }
         }
 
         if (PlayerPrefs.HasKey("Obst_speed"))

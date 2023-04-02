@@ -18,12 +18,14 @@ public class Spawner : MonoBehaviour
     public float timeToSpawnIncrease;
     float sub_timeToSpawnIncrease;
     public float minTimeBetweenSpawn;
+    float IncSpawn;
 
     private void Start()
     {
         sub_timeToIncrease = timeToIncrease;
         sub_timeToSpawnIncrease = timeToSpawnIncrease;
         PlayerPrefs.SetFloat("Obst_speed", speed);
+        IncSpawn = timeBetweenSpawn / 20;
     }
 
     // Update is called once per frame
@@ -34,7 +36,7 @@ public class Spawner : MonoBehaviour
 
         if (timeToIncrease <= 0 && maxspeed > speed)
         {
-            speed = speed + (speed / 20);
+            speed *= 1.05f;
             timeToIncrease = sub_timeToIncrease;
         }
         else
@@ -44,7 +46,7 @@ public class Spawner : MonoBehaviour
         
         if (timeToSpawnIncrease <= 0 && timeBetweenSpawn > minTimeBetweenSpawn)
         {
-            timeBetweenSpawn -= timeBetweenSpawn / 20;
+            timeBetweenSpawn -= IncSpawn;
             timeToSpawnIncrease = sub_timeToSpawnIncrease;
         }
         else

@@ -26,6 +26,7 @@ public class Move : MonoBehaviour
     private bool isMagnet = false;
     public float CoolDownTime;
     private float curMagnetCoolDownTime;
+    public GameObject magnet;
 
     private bool isShield = false;
     private float curShieldCoolDownTime;
@@ -38,6 +39,9 @@ public class Move : MonoBehaviour
 
     public float minSpeed;
 
+    public AudioSource coinSound;
+    public AudioSource boosterSound;
+    public AudioSource obstacleSound;
 
     private void Start()
     {
@@ -78,6 +82,7 @@ public class Move : MonoBehaviour
             if (curMagnetCoolDownTime <= 0)
             {
                 isMagnet = false;
+                magnet.SetActive(false);
             }
             else
             {
@@ -118,28 +123,38 @@ public class Move : MonoBehaviour
         {
             if (!isShield)
             {
+                obstacleSound.Play();
                 Wasted_window.SetActive(true);
                 score.text = score_counter.GetComponent<Text>().text;
                 score_counter.SetActive(false);
                 gameObject.SetActive(false);
             }
+            else
+            {
+                isShield = false;
+                shield.SetActive(false);
+            }
         }
 
         if (collision.CompareTag("Coin"))
         {
+            coinSound.Play();
             PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 1);
             Destroy(collision.gameObject);
         }
 
         if (collision.CompareTag("Magnet"))
         {
+            boosterSound.Play();
             curMagnetCoolDownTime = CoolDownTime;
             isMagnet = true;
             Destroy(collision.gameObject);
+            magnet.SetActive(true);
         }
 
         if (collision.CompareTag("Shield"))
         {
+            boosterSound.Play();
             curShieldCoolDownTime = CoolDownTime;
             isShield = true;
             Destroy(collision.gameObject);
@@ -148,12 +163,14 @@ public class Move : MonoBehaviour
 
         if (collision.CompareTag("CoinBag"))
         {
+            boosterSound.Play();
             PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + Random.Range(10, 20));
             Destroy(collision.gameObject);
         }
         
         if (collision.CompareTag("SlowDown"))
         {
+            boosterSound.Play();
             spawner.GetComponent<Spawner>().timeBetweenSpawn = spawnerSpeed;
             boosterSpawner.GetComponent<boosterSpawner>().timeBetweenSpawn = boosterSpeed;
             PlayerPrefs.SetFloat("Obst_speed", minSpeed);
@@ -169,7 +186,8 @@ public class Move : MonoBehaviour
         {
             if (coin.gameObject.CompareTag("Coin"))
             {
-                coin.gameObject.transform.position = Vector3.SmoothDamp(coin.gameObject.transform.position, new Vector3(transform.position.x, transform.position.y, 0), ref velocity, 0.5f);
+                coin.gameObject.GetComponent<CoinBoosters>().ableToReach = true;
+                coin.gameObject.transform.position = Vector3.SmoothDamp(coin.gameObject.transform.position, new Vector3(transform.position.x, transform.position.y, 0), ref velocity, 0.7f);
             }
         }
     }

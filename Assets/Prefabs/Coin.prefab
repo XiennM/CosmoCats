@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5092888734668416206}
   - component: {fileID: 7855083080983056370}
-  - component: {fileID: 1815000979342422970}
   - component: {fileID: 4299335146208990353}
   - component: {fileID: 1320386863417999180}
+  - component: {fileID: 8874620395812641414}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Coin
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4711146715876253596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.07, y: 2.1209326, z: -0.041116}
-  m_LocalScale: {x: 0.2459536, y: 0.2459536, z: 0.2459536}
+  m_LocalScale: {x: 0.31132632, y: 0.31132632, z: 0.31132632}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f7e1deae394791b4283ce52390eb5e44, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 162bee0595e3330438980e858c0daf46, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,22 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &1815000979342422970
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4711146715876253596}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.84, y: 1.83}
-  m_Direction: 0
 --- !u!114 &4299335146208990353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3291bec168a5cb34fb0e05429d90bde8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.26
+  radius: 0.28
 --- !u!114 &1320386863417999180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,3 +113,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToDestroy: 10
+--- !u!58 &8874620395812641414
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4711146715876253596}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.615

@@ -856,6 +856,7 @@ MonoBehaviour:
   skins:
   - {fileID: 21300000, guid: 2cbb7631f2cebb245983c7eb4ddcb2a2, type: 3}
   - {fileID: 21300000, guid: 1882915c8834e1b4b809e03d5e8f4c48, type: 3}
+  - {fileID: 21300000, guid: d9bda6f53bc066940aaa5d9b0c8e38ac, type: 3}
   buyButton: {fileID: 1488933452}
   _buy: {fileID: 21300000, guid: f5c221c5ddcc35048b5d053ff44303be, type: 3}
   _equip: {fileID: 21300000, guid: 6c45ff292ef7c344e8fc3832c318e63c, type: 3}
@@ -3241,7 +3242,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.319, y: 0.016}
   m_AnchorMax: {x: 0.68532, y: 0.19446513}
-  m_AnchoredPosition: {x: -3.1081848, y: 8.001221}
+  m_AnchoredPosition: {x: -3.1081848, y: 8.000977}
   m_SizeDelta: {x: -49.468994, y: -86.16043}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1055640634
@@ -3988,6 +3989,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ed909e8155d4eb64f86b605305c90150, type: 3}
   - {fileID: 21300000, guid: 17326b5f0af503842949ca8d50749d4a, type: 3}
   - {fileID: 21300000, guid: 89c9dd2d26ad04f4281d4bdae7af99c1, type: 3}
+  - {fileID: 21300000, guid: d25a166f9965b854aade1c5695dfb5eb, type: 3}
+  - {fileID: 21300000, guid: b46bd945fbf9db448913b8a2a15d9e11, type: 3}
+  - {fileID: 21300000, guid: 3e9dd943f3bea554cacba8007b23d1cb, type: 3}
   buyButton: {fileID: 1055640634}
   _buy: {fileID: 21300000, guid: f5c221c5ddcc35048b5d053ff44303be, type: 3}
   _equip: {fileID: 21300000, guid: 6c45ff292ef7c344e8fc3832c318e63c, type: 3}
@@ -5824,6 +5828,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1553707408}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2094343434}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: CheatCode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

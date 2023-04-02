@@ -90,5 +90,12 @@ public class MainMenu : MonoBehaviour
     public void Button_click()
     {
         click_audio.Play();
-    }    
+    }
+
+    public void CheatCode()
+    {
+        PlayerPrefs.SetInt("Coins", 10000);
+        coins = PlayerPrefs.GetInt("Coins");
+        coinCounter.text = coins.ToString();
+    }
 }
