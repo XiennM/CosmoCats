@@ -3,13 +3,17 @@
 <p><b>Краткое описание:</b> Вам предстоит отправиться в увлекательное космическое путешествие, чтобы помочь пушистым астронавтам закончить мост, соединяющий галактики.
 <h2 align="center">Игровой процесс</h2>
 <ul>
-<li><b>Перемещение котика</b> осуществляется путём нажатия на правую или левую сторону экрана.</li>
+<li><b>Перемещение котика</b> осуществляется путём свайпов влево или вправо.</li>
 <li> Уклоняйтесь от препятствий, передвигаясь по трём полосам.</li>
+<li> Собирайте бустеры: магнит, щит или замедление.</li>
+<li> Копите монеты и открывайте новые скины для котика и ракеты.</li>
 </ul>
 <h2 align="center">Скриншоты игры</h2>
 <h3>Главное меню</h3>
-<img src="./Assets/ReadMeImages/mainmenu.jpg" height = 800>
+<img src="./Assets/ReadMeImages/new_menu.jpg" height = 800>
 <h3>Выбор котика и ракеты для него</h3>
-<img src="./Assets/ReadMeImages/gallery.jpg" height = 800>
+<img src="./Assets/ReadMeImages/new_gallery.jpg" height = 800>
+<h3>Страница комикса</h3>
+<img src="./Assets/ReadMeImages/comics_page.jpg" height = 800>
 <h3>Игровой процесс</h3>
-<img src="./Assets/ReadMeImages/gameplay.jpg" height = 800>
+<img src="./Assets/ReadMeImages/gameplay2.jpg" height = 800>
