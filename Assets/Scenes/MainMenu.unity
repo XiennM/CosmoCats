@@ -858,7 +858,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1882915c8834e1b4b809e03d5e8f4c48, type: 3}
   - {fileID: 21300000, guid: d9bda6f53bc066940aaa5d9b0c8e38ac, type: 3}
   buyButton: {fileID: 1488933452}
-  _buy: {fileID: 21300000, guid: f5c221c5ddcc35048b5d053ff44303be, type: 3}
+  _buy: {fileID: 21300000, guid: 5131c9363196c604fa3d021a13b0afcf, type: 3}
   _equip: {fileID: 21300000, guid: 6c45ff292ef7c344e8fc3832c318e63c, type: 3}
   _equiped: {fileID: 21300000, guid: a3adc836ce4af3f4a9a65c7b99ce6593, type: 3}
 --- !u!212 &324209526
@@ -3993,7 +3993,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b46bd945fbf9db448913b8a2a15d9e11, type: 3}
   - {fileID: 21300000, guid: 3e9dd943f3bea554cacba8007b23d1cb, type: 3}
   buyButton: {fileID: 1055640634}
-  _buy: {fileID: 21300000, guid: f5c221c5ddcc35048b5d053ff44303be, type: 3}
+  _buy: {fileID: 21300000, guid: 5131c9363196c604fa3d021a13b0afcf, type: 3}
   _equip: {fileID: 21300000, guid: 6c45ff292ef7c344e8fc3832c318e63c, type: 3}
   _equiped: {fileID: 21300000, guid: a3adc836ce4af3f4a9a65c7b99ce6593, type: 3}
 --- !u!212 &1216625193
@@ -4479,7 +4479,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1344008356
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4694,7 +4694,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1349852003
 RectTransform:
   m_ObjectHideFlags: 0

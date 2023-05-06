@@ -23,6 +23,7 @@ public class CharacterCustomization : MonoBehaviour
 
             if (PlayerPrefs.GetInt("novy_kot" + "buy") == 0)
             {
+                int price = 100;
                 foreach (Sprite skin in skins)
                 {
                     if ("novy_kot" == skin.name)
@@ -33,20 +34,25 @@ public class CharacterCustomization : MonoBehaviour
                     else
                     {
                         PlayerPrefs.SetInt(skin.name + "buy", 0);
+                        PlayerPrefs.SetInt(skin.name + "price", price);
+                        price += 50;
                     }
                 }
             }
             if (PlayerPrefs.GetInt(spriteRenderer.sprite.name + "buy") == 0)
             {
+                buyButton.GetComponentInChildren<Text>().text = PlayerPrefs.GetInt(spriteRenderer.sprite.name + "price").ToString();
                 buyButton.GetComponent<Image>().sprite = _buy;
             }
             else if (PlayerPrefs.GetInt(spriteRenderer.sprite.name + "equip") == 0)
             {
                 buyButton.GetComponent<Image>().sprite = _equip;
+                buyButton.GetComponentInChildren<Text>().text = "";
             }
             else
             {
                 buyButton.GetComponent<Image>().sprite = _equiped;
+                buyButton.GetComponentInChildren<Text>().text = "";
             }
         }
         else if (spriteRenderer.name.Contains("Rocket"))
@@ -55,6 +61,7 @@ public class CharacterCustomization : MonoBehaviour
 
             if (PlayerPrefs.GetInt("Rocket_0" + "buy") == 0)
             {
+                int price = 100;
                 foreach (Sprite skin in skins)
                 {
                     if ("Rocket_0" == skin.name)
@@ -65,21 +72,26 @@ public class CharacterCustomization : MonoBehaviour
                     else
                     {
                         PlayerPrefs.SetInt(skin.name + "buy", 0);
+                        PlayerPrefs.SetInt(skin.name + "price", price);
+                        price += 50;
                     }
                 }
             }
 
             if (PlayerPrefs.GetInt(spriteRenderer.sprite.name + "buy") == 0)
             {
+                buyButton.GetComponentInChildren<Text>().text = PlayerPrefs.GetInt(spriteRenderer.sprite.name + "price").ToString();
                 buyButton.GetComponent<Image>().sprite = _buy;
             }
             else if (PlayerPrefs.GetInt(spriteRenderer.sprite.name + "equip") == 0)
             {
                 buyButton.GetComponent<Image>().sprite = _equip;
+                buyButton.GetComponentInChildren<Text>().text = "";
             }
             else
             {
                 buyButton.GetComponent<Image>().sprite = _equiped;
+                buyButton.GetComponentInChildren<Text>().text = "";
             }
         }
     }
@@ -88,11 +100,12 @@ public class CharacterCustomization : MonoBehaviour
     {
         if (PlayerPrefs.GetInt(spriteRenderer.sprite.name + "buy") == 0)
         {
-            if (PlayerPrefs.GetInt("Coins") >= 100)
+            if (PlayerPrefs.GetInt("Coins") >= PlayerPrefs.GetInt(spriteRenderer.sprite.name + "price"))
             {
                 buyButton.GetComponent<Image>().sprite = _equiped;
+                buyButton.GetComponentInChildren<Text>().text = "";
 
-                PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 100);
+                PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - PlayerPrefs.GetInt(spriteRenderer.sprite.name + "price"));
 
                 PlayerPrefs.SetInt(spriteRenderer.sprite.name + "buy", 1);
 
@@ -121,6 +134,7 @@ public class CharacterCustomization : MonoBehaviour
         else if (PlayerPrefs.GetInt(spriteRenderer.sprite.name + "buy") == 1)
         {
             buyButton.GetComponent<Image>().sprite = _equiped;
+            buyButton.GetComponentInChildren<Text>().text = "";
 
             foreach (Sprite skin in skins)
             {
@@ -157,14 +171,17 @@ public class CharacterCustomization : MonoBehaviour
         if (PlayerPrefs.GetInt(spriteRenderer.sprite.name + "buy") == 0)
         {
             buyButton.GetComponent<Image>().sprite = _buy;
+            buyButton.GetComponentInChildren<Text>().text = PlayerPrefs.GetInt(spriteRenderer.sprite.name + "price").ToString();
         }
         else if (PlayerPrefs.GetInt(spriteRenderer.sprite.name + "equip") == 0)
         {
             buyButton.GetComponent<Image>().sprite = _equip;
+            buyButton.GetComponentInChildren<Text>().text = "";
         }
         else if (PlayerPrefs.GetInt(spriteRenderer.sprite.name + "equip") == 1)
         {
             buyButton.GetComponent<Image>().sprite = _equiped;
+            buyButton.GetComponentInChildren<Text>().text = "";
         }
     }
 
@@ -180,14 +197,17 @@ public class CharacterCustomization : MonoBehaviour
         if (PlayerPrefs.GetInt(spriteRenderer.sprite.name + "buy") == 0)
         {
             buyButton.GetComponent<Image>().sprite = _buy;
+            buyButton.GetComponentInChildren<Text>().text = PlayerPrefs.GetInt(spriteRenderer.sprite.name + "price").ToString();
         }
         else if (PlayerPrefs.GetInt(spriteRenderer.sprite.name + "equip") == 0)
         {
             buyButton.GetComponent<Image>().sprite = _equip;
+            buyButton.GetComponentInChildren<Text>().text = "";
         }
         else if (PlayerPrefs.GetInt(spriteRenderer.sprite.name + "equip") == 1)
         {
             buyButton.GetComponent<Image>().sprite = _equiped;
+            buyButton.GetComponentInChildren<Text>().text = "";
         }
     }
 }
