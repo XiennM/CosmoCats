@@ -80,6 +80,8 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(waiter());
         Menu.SetActive(true);
         Gallery.SetActive(false);
+        coins = PlayerPrefs.GetInt("Coins");
+        instance.coinCounter.text = coins.ToString();
     }
     public void toMenu2()
     {
