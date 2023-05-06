@@ -187,7 +187,7 @@ public class Move : MonoBehaviour
             if (coin.gameObject.CompareTag("Coin"))
             {
                 coin.gameObject.GetComponent<CoinBoosters>().ableToReach = true;
-                coin.gameObject.transform.position = Vector3.SmoothDamp(coin.gameObject.transform.position, new Vector3(transform.position.x, transform.position.y, 0), ref velocity, 0.7f);
+                coin.gameObject.transform.position = Vector3.SmoothDamp(coin.gameObject.transform.position, new Vector3(transform.position.x, transform.position.y, 0), ref velocity, 0.5f);
             }
         }
     }
