@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 0.28
+  ableToReach: 0
 --- !u!114 &1320386863417999180
 MonoBehaviour:
   m_ObjectHideFlags: 0
