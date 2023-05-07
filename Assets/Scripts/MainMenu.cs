@@ -33,11 +33,9 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        if (Score_script.High_score > h_score)
-        {
-            h_score = Score_script.High_score;
-            PlayerPrefs.SetInt("SaveScore", h_score);
-        }
+        if (PlayerPrefs.HasKey("SaveScore"))
+            h_score = PlayerPrefs.GetInt("SaveScore");
+        else h_score = 0;
         instance.highScore.text = h_score.ToString();
         instance.coinCounter.text = coins.ToString();
         Gallery.SetActive(false);

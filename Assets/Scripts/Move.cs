@@ -21,7 +21,9 @@ public class Move : MonoBehaviour
 
     public GameObject Wasted_window;
     public Text score;
+    public Text pause_score;
     public GameObject score_counter;
+    public GameObject scoreMain;
 
     private bool isMagnet = false;
     public float CoolDownTime;
@@ -43,66 +45,88 @@ public class Move : MonoBehaviour
     public AudioSource boosterSound;
     public AudioSource obstacleSound;
 
+    private Animator camAnim;
+
+    public bool isPaused = false;
+    public bool isResumed = false;
+
+    float timeToResume = 0.5f;
+
     private void Start()
     {
         float height = Camera.main.orthographicSize * 2.0f;
         float width = height * Camera.main.aspect;
         Xincrement = width / 3;
+        camAnim = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
     }
 
     void Update()
     {
+
+        if (isResumed)
+        {
+            timeToResume -= Time.deltaTime;
+            if (timeToResume < 0)
+            {
+                isResumed = false;
+                timeToResume = 0.5f;
+            }
+        }
+
         transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
 
-        if (Input.touchCount>0&&Input.GetTouch(0).phase==TouchPhase.Began)
-        {
-            fingerCurPos = Input.GetTouch(0).position;
-        }
-
-        if (Input.touchCount>0&&Input.GetTouch(0).phase==TouchPhase.Ended)
-        {
-            fingerTargetPos = Input.GetTouch(0).position;
-
-            if (fingerTargetPos.x > fingerCurPos.x && columnNum != 1)
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
-                MoveRight();
+                fingerCurPos = Input.GetTouch(0).position;
             }
 
-            if (fingerTargetPos.x < fingerCurPos.x && columnNum != -1)
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
             {
-                MoveLeft();
+                fingerTargetPos = Input.GetTouch(0).position;
+
+                if (fingerTargetPos.x > fingerCurPos.x && columnNum != 1)
+                {
+                    if (!isPaused && !isResumed)
+                        MoveRight();
+                }
+
+                if (fingerTargetPos.x < fingerCurPos.x && columnNum != -1)
+                {
+                    if (!isPaused && !isResumed)
+                        MoveLeft();
             }
-        }
+            }
 
-        if (isMagnet)
-        {
-
-            MagnetMove();
-
-            if (curMagnetCoolDownTime <= 0)
+            if (isMagnet)
             {
-                isMagnet = false;
-                magnet.SetActive(false);
-            }
-            else
-            {
-                curMagnetCoolDownTime -= Time.deltaTime;
-            }
-        }
 
-        if (isShield)
-        {
-            if (curShieldCoolDownTime <= 0)
-            {
-                isShield = false;
-                shield.SetActive(false);
-            }
-            else
-            {
-                curShieldCoolDownTime -= Time.deltaTime;
-            }
-        }
+                MagnetMove();
 
+                if (curMagnetCoolDownTime <= 0)
+                {
+                    isMagnet = false;
+                    magnet.SetActive(false);
+                }
+                else
+                {
+                    curMagnetCoolDownTime -= Time.deltaTime;
+                }
+            }
+
+            if (isShield)
+            {
+                if (curShieldCoolDownTime <= 0)
+                {
+                    isShield = false;
+                    shield.SetActive(false);
+                }
+                else
+                {
+                    curShieldCoolDownTime -= Time.deltaTime;
+                }
+            }
+
+        pause_score.text = score_counter.GetComponent<Text>().text;
     }
 
     public void MoveRight()
@@ -124,10 +148,14 @@ public class Move : MonoBehaviour
             if (!isShield)
             {
                 obstacleSound.Play();
+                camAnim.SetTrigger("shake");
                 Wasted_window.SetActive(true);
                 score.text = score_counter.GetComponent<Text>().text;
                 score_counter.SetActive(false);
+                scoreMain.SetActive(false);
                 gameObject.SetActive(false);
+                if (int.Parse(score.text) > PlayerPrefs.GetInt("SaveScore"))
+                    PlayerPrefs.SetInt("SaveScore", int.Parse(score.text));
             }
             else
             {
@@ -187,7 +215,7 @@ public class Move : MonoBehaviour
             if (coin.gameObject.CompareTag("Coin"))
             {
                 coin.gameObject.GetComponent<CoinBoosters>().ableToReach = true;
-                coin.gameObject.transform.position = Vector3.SmoothDamp(coin.gameObject.transform.position, new Vector3(transform.position.x, transform.position.y, 0), ref velocity, 0.5f);
+                coin.gameObject.transform.position = Vector3.SmoothDamp(coin.gameObject.transform.position, new Vector3(transform.position.x, transform.position.y, 0), ref velocity, Vector3.Distance(transform.position, coin.transform.position) / 3f);
             }
         }
     }

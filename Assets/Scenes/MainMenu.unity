@@ -1307,6 +1307,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0128b22901e20764d86eaf46eed1379f, type: 3}
   - {fileID: 21300000, guid: cf5d924a28c47084e91ee3b43add4b54, type: 3}
   - {fileID: 21300000, guid: 47376bfc074df574d98208c660e50ed8, type: 3}
+  - {fileID: 21300000, guid: 14c0ee7ed7250ac4c87a3309bb245ee9, type: 3}
+  - {fileID: 21300000, guid: 79ad7c83b8028a14a9bbc6adb2286189, type: 3}
   PageNum: 0
 --- !u!224 &624783788
 RectTransform:
@@ -4852,6 +4854,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0128b22901e20764d86eaf46eed1379f, type: 3}
   - {fileID: 21300000, guid: cf5d924a28c47084e91ee3b43add4b54, type: 3}
   - {fileID: 21300000, guid: 47376bfc074df574d98208c660e50ed8, type: 3}
+  - {fileID: 21300000, guid: 14c0ee7ed7250ac4c87a3309bb245ee9, type: 3}
+  - {fileID: 21300000, guid: 79ad7c83b8028a14a9bbc6adb2286189, type: 3}
   PageNum: 0
 --- !u!114 &1355878293
 MonoBehaviour:
